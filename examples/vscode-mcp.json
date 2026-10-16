@@ -1,0 +1,5 @@
+{
+  "servers": {
+    "ferntool": { "type": "http", "url": "https://www.ferntool.com/mcp" }
+  }
+}

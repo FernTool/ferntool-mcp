@@ -1,0 +1,10 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.ferntool/ip",
+  "title": "FernTool IP Lookup",
+  "description": "Get your public IP, look up country/ISP/ASN for any IP, and validate IPv4/IPv6.",
+  "version": "1.0.0",
+  "websiteUrl": "https://www.ferntool.com",
+  "repository": { "url": "https://github.com/FernTool/ferntool-mcp", "source": "github" },
+  "remotes": [ { "type": "streamable-http", "url": "https://www.ferntool.com/mcp" } ]
+}
