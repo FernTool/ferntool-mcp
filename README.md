@@ -1,5 +1,7 @@
 # FernTool — network toolbox MCP server & free IP API
 
+[![Listed on mcpservers.org](https://mcpservers.org/badge.svg)](https://mcpservers.org/servers/ferntool/ferntool-mcp)
+
 <!-- mcp-name: com.ferntool/ip -->
 
 [![MCP](https://img.shields.io/badge/MCP-streamable--http-0b7a4b)](https://www.ferntool.com/mcp)
