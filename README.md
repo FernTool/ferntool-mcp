@@ -16,6 +16,8 @@
 - **batch** look up to 100 IPs in one call
 - run **WHOIS (RDAP)** for domains, IPs and ASNs, **DNS** lookups (A/AAAA/MX/TXT/NS/CNAME/SOA), **reverse DNS** and **IPv4/IPv6 subnet** math
 - validate and classify IP addresses (public, private, loopback, documentation and so on)
+- make **static QR codes** (links, Wi-Fi, email, phone) as SVG, and get **exact word and character counts** (models are bad at counting; this isn't)
+- estimate **AI API cost** for a text across OpenAI, Claude and Gemini, and check **live AI service status** (ChatGPT, Claude, Gemini and more) from official status pages
 
 No API key, no install, no sign-up. It's just a URL:
 
@@ -64,6 +66,10 @@ Ready-made files are in [`examples/`](examples).
 | `whois_lookup` | `query` (domain, IP or ASN like `AS13335`) | RDAP record: registrar, created/expiry/updated dates, status, nameservers, DNSSEC; for IPs/ASNs the network name, range/CIDR, owner org, country and abuse contact. |
 | `dns_lookup` | `domain`, optional `types` (A, AAAA, MX, TXT, NS, CNAME, SOA) | Records with TTLs via Cloudflare 1.1.1.1 DNS-over-HTTPS, response status and DNSSEC validation flag. |
 | `reverse_dns` | `ip` | PTR hostname(s) and whether the hostname resolves back to the IP (forward-confirmed). |
+| `estimate_ai_cost` | `text` or `tokens`, optional `output_tokens` | Approximate tokens, USD cost per model (OpenAI, Anthropic, Google) and whether it fits each context window. |
+| `ai_service_status` | optional `service` (chatgpt, claude, gemini, copilot, perplexity, cohere) | Live status read from official status pages (cached ~60 s): `up`, `degraded`, `down` or `unknown`. |
+| `make_qr_code` | `text` (up to 2000 chars), optional `ecc` (L/M/Q/H) | Static QR code (never expires) as an SVG string, plus an image URL on ferntool.com that renders the same code. |
+| `count_words` | `text` | Exact words, characters (with/without spaces), sentences, paragraphs, reading/speaking time and the most repeated words. |
 | `subnet_calc` | `cidr` (e.g. `192.168.1.0/24`, `2001:db8::/48`) | Network, netmask, wildcard, broadcast, first/last usable, total and usable addresses, block type. |
 
 Example `lookup_ip` result for `8.8.8.8`:
@@ -106,6 +112,7 @@ curl https://www.ferntool.com/api/whois/example.com          # RDAP WHOIS (domai
 curl "https://www.ferntool.com/api/dns/example.com?type=A,MX" # DNS via Cloudflare DoH
 curl https://www.ferntool.com/api/reverse-dns/1.1.1.1        # PTR
 curl "https://www.ferntool.com/api/subnet?cidr=10.0.0.0/22"   # subnet calculator
+curl "https://www.ferntool.com/api/qr?text=https://example.com" -o qr.svg  # static QR code (SVG)
 ```
 
 Python:
